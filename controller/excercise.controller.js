@@ -41,13 +41,11 @@ async function putArticle(req, res) {
       new: true,
       runValidators: true,
     });
-
     if (!response) {
       return res.status(404).json({
         status: "sorry id not found",
       });
     }
-
     console.log("successfully saved the data ");
     return res.status(200).json(response);
   } catch (e) {
@@ -60,12 +58,9 @@ async function putArticle(req, res) {
 
 async function deleteArticle(req, res) {
   console.log("putArticle method is running");
-
   const id = req.params.id;
-
   try {
     const response = await ExerciseArticleModel.findByIdAndDelete(id);
-
     if (!response) {
       return res.status(404).json({
         status: "sorry id not found",
