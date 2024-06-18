@@ -126,20 +126,16 @@ async function patchVideos(req, res) {
       runValidators: true,
     });
     console.log("step 2");
-
     if (!response) {
       return res.status(404).json({
         status: "sorry id not found",
       });
     }
-
     console.log("step 3");
-
     console.log("successfully saved the data ");
     return res.status(200).json(response);
   } catch (e) {
     console.log("step 5");
-
     console.log("something went wrong");
     return res.status(500).json({
       error: e,
@@ -149,18 +145,14 @@ async function patchVideos(req, res) {
 
 async function deleteVideos(req, res) {
   console.log("delete video  health method is running");
-
   const id = req.params.id;
-
   try {
     const response = await healthVideoModel.findByIdAndDelete(id);
-
     if (!response) {
       return res.status(404).json({
         status: "sorry id not found",
       });
     }
-
     console.log("successfully deleted the data ");
     return res.status(200).json({
       status: "successfully deleted",
